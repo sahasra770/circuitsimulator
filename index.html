@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RLC Circuit Simulator</title>
+    <link rel="stylesheet" href="simstyle.css">
+</head>
+<body>
+
+    <div class="toolbar">
+        <button class="tool-btn active" id="btn-select" onclick="setTool('select')">Select / Drag</button>
+        <div style="width: 1px; height: 20px; background: #444; margin: 0 5px;"></div>
+        <button class="tool-btn" onclick="setTool('wire')">Wire</button>
+        <button class="tool-btn" onclick="setTool('resistor')">Resistor</button>
+        <button class="tool-btn" onclick="setTool('capacitor')">Capacitor</button>
+        <button class="tool-btn" onclick="setTool('inductor')">Inductor</button>
+        <button class="tool-btn" onclick="setTool('source')">DC Voltage</button>
+        <button class="tool-btn" onclick="setTool('ground')">Ground</button>
+        <div style="width: 1px; height: 20px; background: #444; margin: 0 5px;"></div>
+        <button class="tool-btn" onclick="undo()">Undo</button>
+        <button class="tool-btn" onclick="redo()">Redo</button>
+        <div style="width: 1px; height: 20px; background: #444; margin: 0 5px;"></div>
+        <button class="tool-btn" onclick="toggleSim()" id="btn-sim">Start Simulation</button>
+        <button class="tool-btn" onclick="resetSim()">Reset</button>
+        <button class="tool-btn" style="background: #a33;" onclick="deleteSelected()">Delete Selected</button>
+        <button class="tool-btn" style="background: #c33;" onclick="clearAll()">Clear All</button>
+    </div>
+
+    <div class="main-container">
+        <div class="canvas-wrapper" id="canvas-container">
+            <canvas id="circuitCanvas"></canvas>
+            <div class="notification" id="notification"></div>
+        </div>
+        <div class="bottom-panel">
+            <div class="props-panel">
+                <h3 style="margin-top: 0; font-size: 14px;">Properties</h3>
+                <div id="props-content">
+                    <div style="color: #666; font-size: 12px;">Select a component to edit values.</div>
+                </div>
+            </div>
+            <div class="graph-panel">
+                <div class="graph-title">
+                    <span id="graph-label">Component Trajectories (Select a component)</span>
+                    <span><span style="color:#4caf50" id="i-legend">Current (mA)</span> / <span style="color:#00bcd4">Voltage (V)</span></span>
+                </div>
+                <canvas id="graphCanvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+<script src="scriptsimu.js"></script>
+</body>
+</html>
